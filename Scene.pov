@@ -4,17 +4,19 @@
 //  UNIT: CG200 Assignment 1 - 2016
 //  PURPOSE: Primary POV file for the overall scene
 //  LAST MOD: 18/08/16
-//  REQUIRES: Palisade_Pile_0, Palisade_Fence_0, stoneold, Tomby, Tree_00
+//  REQUIRES: fencepole, fencing, tombstone, tree
 //------------------------------------------------------------------------------
+
+#version 3.7;
+global_settings{ assumed_gamma 1.0 }
 
 #include "colors.inc"
 #include "shapes.inc"
 #include "textures.inc"
-#include "Palisade_Pile_0.inc"
-#include "Palisade_Fence_0.inc"
-#include "stoneold.inc"
-#include "Tomby.inc"
-#include "Tree_00.inc"
+#include "fencepole.inc"
+#include "fencing.inc"
+#include "tombstone.inc"
+#include "tree.inc"
 
 //------------------------------------------------------------------------------
 // TOMBSTONE
@@ -27,9 +29,10 @@ TombstoneObj
 box
 {
     <0,0,0>, <1,1,1>
-    texture{
+    texture
+    {
         White_Marble
-        normal { granite 30  scale 0.0005}
+        normal { granite 30  scale 0.0005 }
         finish { phong 0.1 }
     }
     scale <100,0.1,60>
@@ -54,7 +57,7 @@ camera
 //-----------------------------------------------------------------------------
 // PRIMARY LIGHT SOURCE
 
-light_source { <-30,80,-20> color White }
+light_source{ <0,20,-60> color White}
 
 //-----------------------------------------------------------------------------
 // BACKGROUND COLOUR
@@ -69,6 +72,7 @@ plane
     <0,1,0>, 0
     texture
     {
+        // GRASS COLOUR + BUMPINESS
         pigment { color rgb<0.35,0.65,0.0>*0.72 }
     	normal  { bumps 0.8 scale 0.25 }
         finish  { phong 0.1 }
@@ -94,13 +98,11 @@ fog
 box
 {
     <0,0,0>, <1,1,1>
-    //texture { Pile_Body_Texture }
-
     pigment
     {
         image_map
         {
-            png "textures/p1.png"
+            png "textures/logo_left.png"
             map_type 0
         }
     }
@@ -126,7 +128,7 @@ box
     {
         image_map
         {
-            png "textures/p2.png"
+            png "textures/logo_right.png"
             map_type 0
         }
     }
@@ -169,17 +171,15 @@ sky_sphere
 
 object
 {
-    Palisade_Fence_0
+    Fencing
     (
         15.00,   // LENGTH
         2.50,    // HEIGHT
         0.40,    // TIP HEIGHT
         0.2,     // TIP RADIUS
         0.9,     // RELATIVE PILE DISTANCE
-        Pile_Body_Texture, Pile_Tip_Texture
     )
     scale<3,6,1>
-    rotate<0,0,0>
     translate<15,0,0>
 }
 
@@ -188,27 +188,29 @@ object
 
 object
 {
-    Palisade_Fence_0
+    Fencing
     (
         15.00,   // LENGTH
         2.50,    // HEIGHT
         0.40,    // TIP HEIGHT
         0.2,     // TIP RADIUS
         0.9,     // RELATIVE PILE DISTANCE
-        Pile_Body_Texture, Pile_Tip_Texture
     )
     scale<3,6,1>
-    rotate<0,0,0>
     translate<-60,0,0>
 }
 
 //-----------------------------------------------------------------------------
-// TREES
+// FRONT TREE
 
 object
 {
-    Tree_00
+    Tree
     scale <5,6,5>
-    rotate<0,0,0>
     translate<22,0,-15>
 }
+
+//-----------------------------------------------------------------------------
+// BACKGROUND TREES
+
+Forest
