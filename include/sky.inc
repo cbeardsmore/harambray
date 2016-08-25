@@ -31,7 +31,7 @@ plane
                 [1.0 color rgbt <1, 1, 1, 1>*1 ]
             }
             translate< 3, 0,-1>
-            scale <0.3, 0.4, 0c.2>*3
+            scale <0.3, 0.4, 0.2>*3
         }
         finish {emission 1 diffuse 0}
     }
