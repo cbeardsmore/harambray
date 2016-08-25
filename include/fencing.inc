@@ -1,26 +1,19 @@
-// POV-Ray 3.6/3.7 include file "Palisade_Fence_0.inc"
-// author: Friedrich A, Lohmueller, Jan-2006, May-2014
-// homepage: http://www.f-lohmueller.de/
-// email: Friedrich.Lohmueller_aT_t-online.de
+//------------------------------------------------------------------------------
+//  FILE: fencing.inc
+//  AUTHOR: Connor Beardsmore - 15504319
+//  UNIT: CG200 Assignment 1 - 2016
+//  PURPOSE: Creates a single row of fencepole objects
+//  LAST MOD: 22/08/16
 //------------------------------------------------------------------------------
 
-#macro Fencing
-(
-    Length,
-    Height,
-    Tip_Height,
-    Radius,
-    Relative_Distance,
-)
+#declare numPiles = 41;
+#declare Distance = 15/(numPiles+1);
+#declare R1 = seed(12765);
 
 //------------------------------------------------------------------------------
+// FENCING OBJECT
 
-#local numPiles = int (Length / (2*Radius*Relative_Distance));
-#local Distance = Length/(numPiles+1);
-#local Randy = seed(12765);
-
-//------------------------------------------------------------------------------
-
+#declare Fencing =
 union
 {
     #local i = 0;
@@ -28,19 +21,12 @@ union
         object
         {
             Fencepole
-            (
-                Height,
-                Tip_Height,
-                Radius,
-            )
-            rotate<0,360*rand(Randy),0>
-            translate<i*Distance+Radius*Relative_Distance,0,0>
+            rotate<0,360*rand(R1),0>
+            translate<i*Distance+0.18,0,0>
+            scale<3,6,1>            
         }
-
         #local i = i + 1;
     #end
 }
 
 //------------------------------------------------------------------------------
-
-#end

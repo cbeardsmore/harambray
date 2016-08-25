@@ -1,12 +1,18 @@
-// POV-Ray 3.6/3.7 include file "tree.inc"
-// created by Friedrich A, Lohmueller, Dec-2005,. May-2014
-// homepage: http://www.f-lohmueller.de/
-// email: Friedrich.Lohmueller_aT_t-online.de
 //------------------------------------------------------------------------------
+//  FILE: tree.inc
+//  AUTHOR: Connor Beardsmore - 15504319
+//  UNIT: CG200 Assignment 1 - 2016
+//  PURPOSE: Declares tree textures, tree and forest objects
+//  LAST MOD: 22/08/16
+//------------------------------------------------------------------------------
+// RANDOM SEEDS
 
-#version 3.6;
+#declare R1 = seed (34053);
+#declare R2 = seed (62853);
+#declare R3 = seed ( 8353);
 
 //------------------------------------------------------------------------------
+// TREE TEXTURE
 
 #declare Tree_Texture=
 texture
@@ -31,6 +37,7 @@ texture
 }
 
 //------------------------------------------------------------------------------
+// TREE TRUNK TEXTURE
 
 #declare Trunk_Texture=
 texture
@@ -41,6 +48,8 @@ texture
 }
 
 //------------------------------------------------------------------------------
+// TREE OBJECT
+
 #declare Tree =
 union
 {
@@ -68,10 +77,7 @@ union
 }
 
 //------------------------------------------------------------------------------
-
-#declare Random_1 = seed (34053);
-#declare Random_2 = seed (62853);
-#declare Random_3 = seed ( 8353);
+// RANDOM FOREST MAPPING
 
 #declare Forest =
 union
@@ -83,9 +89,9 @@ union
     {
         Tree
         scale <8,10,8>
-        scale 1 + 0.5*(-0.75*rand(Random_1))
-        rotate<12*rand(Random_2),36*(-0.5+rand(Random_2)),0>
-        translate< 180*(-0.5+rand(Random_2)),0, i*1.2+0.5*rand(Random_2)>
+        scale 1 + 0.5*(-0.75*rand(R1))
+        rotate<12*rand(R2),36*(-0.5+rand(R2)),0>
+        translate<180*(-0.5+rand(R2)),0,0.5*rand(R2)+i*1.2>
     }
 
     #declare i = i + 1;
@@ -93,3 +99,5 @@ union
 
     translate<0,0,80>
 }
+
+//------------------------------------------------------------------------------

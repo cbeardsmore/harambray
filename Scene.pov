@@ -4,7 +4,7 @@
 //  UNIT: CG200 Assignment 1 - 2016
 //  PURPOSE: Primary POV file for the overall scene
 //  LAST MOD: 18/08/16
-//  REQUIRES: fencepole, fencing, tombstone, tree
+//  REQUIRES: fencepole.inc, fencing.inc, tombstone.inc, tree.inc
 //------------------------------------------------------------------------------
 
 #version 3.7;
@@ -13,31 +13,14 @@ global_settings{ assumed_gamma 1.0 }
 #include "colors.inc"
 #include "shapes.inc"
 #include "textures.inc"
+#include "stones.inc"
 #include "fencepole.inc"
 #include "fencing.inc"
 #include "tombstone.inc"
 #include "tree.inc"
-
-//------------------------------------------------------------------------------
-// TOMBSTONE
-
-TombstoneObj
-
-//------------------------------------------------------------------------------
-// GRAVEL ROAD
-
-box
-{
-    <0,0,0>, <1,1,1>
-    texture
-    {
-        White_Marble
-        normal { granite 30  scale 0.0005 }
-        finish { phong 0.1 }
-    }
-    scale <100,0.1,60>
-    translate <-50,0,-60>
-}
+#include "rock.inc"
+#include "gates.inc"
+#include "sky.inc"
 
 //-----------------------------------------------------------------------------
 // CAMERA LOCATION
@@ -57,7 +40,7 @@ camera
 //-----------------------------------------------------------------------------
 // PRIMARY LIGHT SOURCE
 
-light_source{ <0,20,-60> color White}
+light_source{ <0,100,-50> color White}
 
 //-----------------------------------------------------------------------------
 // BACKGROUND COLOUR
@@ -79,125 +62,62 @@ plane
     }
 }
 
+//------------------------------------------------------------------------------
+// GRAVEL ROAD
+
+box
+{
+    <0,0,0>, <1,1,1>
+    texture
+    {
+        White_Marble
+        normal { granite 30  scale 0.0005 }
+        finish { phong 0.1 }
+    }
+    scale <100,0.1,60>
+    translate <-50,0,-60>
+}
+
+//-----------------------------------------------------------------------------
+// SKY
+
+SkyPlane
+
 //-----------------------------------------------------------------------------
 // HORIZON FOG
 
-fog
-{
-     fog_type   2
-     distance   800
-     color rgb<1,0.2,0>
-     fog_offset 0.1
-     fog_alt    5
-     turbulence 3.8
- }
 
-//-----------------------------------------------------------------------------
-// LEFT GATE
-
-box
-{
-    <0,0,0>, <1,1,1>
-    pigment
-    {
-        image_map
-        {
-            png "textures/logo_left.png"
-            map_type 0
-        }
+ fog{ fog_type   2
+      distance   1000
+      color      rgb<1,1,1>*0.9
+      fog_offset 0.1
+      fog_alt    20
+      turbulence 1.8
     }
 
-    scale <15,25,2>
-    #if ( clock <= 6 )
-        rotate <0,-15*clock,0>
-    #else
-        rotate <0,-90,0>
-    #end
-    translate <-15,0,0>
-}
+//-----------------------------------------------------------------------------
+// GATES
+
+LeftGate
+RightGate
 
 //-----------------------------------------------------------------------------
-// RIGHT GATE
+// FENCES
 
-box
+union
 {
-    <0,0,0>, <1,1,1>
-    //texture { Pile_Body_Texture }
-
-    pigment
+    // RIGHT FENCE
+    object
     {
-        image_map
-        {
-            png "textures/logo_right.png"
-            map_type 0
-        }
+        Fencing
+        translate<15,0,0>
     }
-
-    scale <-15,25,2>
-    #if ( clock <= 6 )
-        rotate <0,15*clock,0>
-    #else
-        rotate <0,90,0>
-    #end
-    translate <15,0,0>
-}
-
-//-----------------------------------------------------------------------------
-// SKY SUNSET
-
-sky_sphere
-{
-    pigment
+    // LEFT FENCE
+    object
     {
-        gradient <0,1,0>
-        color_map
-        {
-            [0.00 color rgb<0.24,0.32,1> *0.3]
-            [0.23 color rgb<0.16,0.32,0.9> *0.9]
-            [0.37 color rgb<1,0.1,0> ]
-            [0.52 color rgb<1,0.2,0> ]
-            [0.70 color rgb<0.36,0.32,1> *0.7 ]
-            [0.80 color rgb<0.14,0.32,1> *0.5 ]
-            [1.00 color rgb<0.24,0.32,1> *0.3 ]
-        }
-        scale 2
-        rotate <-20,0,0>
-        translate <0,0.7,0>
+        Fencing
+        translate<-60,0,0>
     }
-}
-
-//-----------------------------------------------------------------------------
-// RIGHT FENCE
-
-object
-{
-    Fencing
-    (
-        15.00,   // LENGTH
-        2.50,    // HEIGHT
-        0.40,    // TIP HEIGHT
-        0.2,     // TIP RADIUS
-        0.9,     // RELATIVE PILE DISTANCE
-    )
-    scale<3,6,1>
-    translate<15,0,0>
-}
-
-//-----------------------------------------------------------------------------
-// LEFT FENCE
-
-object
-{
-    Fencing
-    (
-        15.00,   // LENGTH
-        2.50,    // HEIGHT
-        0.40,    // TIP HEIGHT
-        0.2,     // TIP RADIUS
-        0.9,     // RELATIVE PILE DISTANCE
-    )
-    scale<3,6,1>
-    translate<-60,0,0>
 }
 
 //-----------------------------------------------------------------------------
@@ -211,6 +131,28 @@ object
 }
 
 //-----------------------------------------------------------------------------
+//TOMBSTONE SHRUB
+
+object
+{
+    Tree
+    scale <5,6,5>
+    translate<-7,-11,45>
+}
+
+//-----------------------------------------------------------------------------
 // BACKGROUND TREES
 
 Forest
+
+//------------------------------------------------------------------------------
+// TOMBSTONE
+
+TombstoneObj
+
+//------------------------------------------------------------------------------
+// ROCKS
+
+RockCombo
+
+//------------------------------------------------------------------------------

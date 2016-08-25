@@ -1,8 +1,11 @@
-// POV-Ray 3.6/3.7 include file "Palisade_Pile_0.inc"
-// author: Friedrich A, Lohmueller, Jan-2006, May-2014
-// homepage: http://www.f-lohmueller.de/
-// email: Friedrich.Lohmueller_aT_t-online.de
 //------------------------------------------------------------------------------
+//  FILE: fencepole.inc
+//  AUTHOR: Connor Beardsmore - 15504319
+//  UNIT: CG200 Assignment 1 - 2016
+//  PURPOSE: Represents a single fencepole object
+//  LAST MOD: 22/08/16
+//------------------------------------------------------------------------------
+// BODY TEXTURE
 
 #declare Body_Texture =
 texture
@@ -13,6 +16,7 @@ texture
 }
 
 //------------------------------------------------------------------------------
+// TIP TEXTURE
 
 #declare Tip_Texture =
 texture
@@ -23,31 +27,22 @@ texture
 }
 
 //------------------------------------------------------------------------------
+// FENCEPOLE
 
-#macro Fencepole
-(
-    Height,
-    Tip_Height,
-    Radius,
-)
-
-//------------------------------------------------------------------------------
-
+#declare Fencepole =
 union
 {
     cylinder
     {
-        <0,0,0>,<0, Height - Tip_Height,0>, Radius
+        <0,0,0>,<0,2.1,0>, 0.2
         texture{ Body_Texture }
     }
     cone
     {
-        <0,-Tip_Height,0>,Radius, <0,0,0>,0
-        translate<0,Height,0>
+        <0,-0.4,0>,0.2, <0,0,0>,0
+        translate<0,2.5,0>
         texture{ Tip_Texture }
     }
 }
 
 //------------------------------------------------------------------------------
-
-#end
