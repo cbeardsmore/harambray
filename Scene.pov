@@ -89,14 +89,15 @@ box
 //-----------------------------------------------------------------------------
 // HORIZON FOG
 
-
- fog{ fog_type   2
-      distance   1000
-      color      rgb<1,1,1>*0.9
-      fog_offset 0.1
-      fog_alt    20
-      turbulence 1.8
-    }
+fog
+{
+    fog_type   2
+    distance   1000
+    color      rgb<1,1,1>*0.9
+    fog_offset 0.1
+    fog_alt    20
+    turbulence 1.8
+}
 
 //-----------------------------------------------------------------------------
 // FENCES
