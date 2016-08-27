@@ -4,7 +4,8 @@
 //  UNIT: CG200 Assignment 1 - 2016
 //  PURPOSE: Primary POV file for the overall scene
 //  LAST MOD: 18/08/16
-//  REQUIRES: fencepole.inc, fencing.inc, tombstone.inc, tree.inc
+//  REQUIRES: fencepole.inc, fencing.inc, tombstone.inc, tree.inc, rock.inc
+//  REQUIRES: gates.inc, sky.inc, mirrorsphere.inc
 //------------------------------------------------------------------------------
 
 #version 3.7;
@@ -22,6 +23,17 @@ global_settings{ assumed_gamma 1.0 }
 #include "gates.inc"
 #include "sky.inc"
 #include "mirrorsphere.inc"
+
+//------------------------------------------------------------------------------
+// OBJECTS
+
+SkyPlane
+LeftGate
+RightGate
+Forest
+TombstoneObj
+RockCombo
+MirrorSpheres
 
 //-----------------------------------------------------------------------------
 // CAMERA LOCATION
@@ -41,19 +53,11 @@ camera
 //-----------------------------------------------------------------------------
 // LIGHT SOURCES
 
-light_source{ <0,100,100> color White}
+light_source { <0,100,100> color White }
 
-light_source
-{
-    <-18, 1, -5>  color White
-    fade_distance 0.1
-}
+light_source { <-18, 1, -5>  color White fade_distance 0.1 }
 
-light_source
-{
-    <18, 1, -5>  color White
-    fade_distance 0.1
-}
+light_source{ <18, 1, -5>  color White fade_distance 0.1 }
 
 //-----------------------------------------------------------------------------
 // FLOOR PLANE
@@ -139,14 +143,3 @@ object
 }
 
 //-----------------------------------------------------------------------------
-// OBJECTS
-
-SkyPlane
-LeftGate
-RightGate
-Forest
-TombstoneObj
-RockCombo
-MirrorSpheres
-
-//------------------------------------------------------------------------------

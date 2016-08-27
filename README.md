@@ -29,3 +29,11 @@ To convert the rendered images into a single gif. This enables antialiasing and 
 ```
 convert -antialias -delay N rendered/*.png rendered/ani.gif
 ```
+
+##### References
+
+The following website was heavily used in the animation design. The tutorials were followed and premade objects converted for use in the animation:
+
+```
+http://www.f-lohmueller.de/pov_tut/pov__eng.htm
+```

@@ -8,7 +8,7 @@
 # Renders images and converts to gif
 all:
 	~/Documents/POVRay-Mac/Povray37UnofficialMacCmd povray.ini
-	convert -antialias -delay 8 rendered/*.png rendered/ani.gif
+	convert -antialias -delay 10 rendered/*.png rendered/ani.gif
 
 # Removes rendered images and gif
 clean:
