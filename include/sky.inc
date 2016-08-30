@@ -20,7 +20,7 @@ plane
     {
         pigment
         {
-            bozo turbulence 0.75
+            bozo turbulence 1 - abs( 2*(clock/30) )
             octaves 6  omega 0.7 lambda 2
             color_map
             {
