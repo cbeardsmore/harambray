@@ -6,6 +6,8 @@
 
 A 30 frame animation rendered via the POVRAY ray tracing tool.
 
+![](./example.png)
+
 ##### File List
 
 ```
