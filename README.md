@@ -1,6 +1,6 @@
 # harambray
 
-## Computer Graphics 200 - POVRay  
+##### Computer Graphics 200 - POVRay  
 
 ##### Purpose
 
