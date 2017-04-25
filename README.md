@@ -1,8 +1,8 @@
-######Semester 2, 2016
+# harambray
 
-##CG200 Assignment  
+## Computer Graphics 200 - POVRay  
 
-#####Purpose
+##### Purpose
 
 A 30 frame animation rendered via the POVRAY ray tracing tool.
 
