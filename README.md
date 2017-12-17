@@ -1,8 +1,8 @@
-######Semester 2, 2016
+###### Semester 2, 2016
 
-##CG200 Assignment  
+## CG200 Assignment  
 
-#####Purpose
+##### Purpose
 
 A 30 frame animation rendered via the POVRAY ray tracing tool.
 
