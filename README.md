@@ -1,6 +1,6 @@
-###### Semester 2, 2016
+# harambray
 
-## CG200 Assignment  
+##### Computer Graphics 200 - POVRay  
 
 ##### Purpose
 
